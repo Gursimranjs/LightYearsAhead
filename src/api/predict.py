@@ -14,6 +14,12 @@ import json
 import sys
 from pathlib import Path
 
+# Get absolute path to project root
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+MODEL_PATH = PROJECT_ROOT / 'models' / 'model.pkl'
+SCALERS_PATH = PROJECT_ROOT / 'models' / 'scalers.pkl'
+QELM_PATH = PROJECT_ROOT / 'models' / 'qelm_model_improved.pkl'
+
 
 def predict_exoplanet(transit_features, spectral_data=None):
     """
@@ -57,11 +63,12 @@ def predict_exoplanet(transit_features, spectral_data=None):
     """
 
     # Load Transit Classifier (in production, keep this loaded in memory)
-    with open('models/model.pkl', 'rb') as f:
+    with open(MODEL_PATH, 'rb') as f:
         transit_model = pickle.load(f)
 
     # Load feature list for pruning
-    with open('models/feature_list.json', 'r') as f:
+    FEATURE_LIST_PATH = PROJECT_ROOT / 'models' / 'feature_list.json'
+    with open(FEATURE_LIST_PATH, 'r') as f:
         model_features = json.load(f)
 
     # Convert transit features to DataFrame and prune
@@ -100,7 +107,7 @@ def predict_exoplanet(transit_features, spectral_data=None):
     if spectral_data is not None:
         try:
             # Load QELM model data
-            with open('models/qelm_model_improved.pkl', 'rb') as f:
+            with open(QELM_PATH, 'rb') as f:
                 qelm_data = pickle.load(f)
 
             # Extract wavelengths and intensities
