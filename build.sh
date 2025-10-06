@@ -1,6 +1,9 @@
 #!/bin/bash
 # Render build script - downloads models from GitHub releases
 
+echo "Installing Python dependencies first..."
+pip install -r backend_requirements.txt
+
 echo "Checking for model files..."
 
 if [ ! -f "models/model.pkl" ] || [ ! -f "models/scalers.pkl" ] || [ ! -f "models/qelm_model_improved.pkl" ]; then
