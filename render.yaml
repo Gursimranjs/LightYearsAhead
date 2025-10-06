@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: lightyearsahead-api
+    env: python
+    buildCommand: pip install -r backend_requirements.txt
+    startCommand: gunicorn backend_api:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18
