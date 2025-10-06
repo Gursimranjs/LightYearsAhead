@@ -1,0 +1,11 @@
+# Flask Backend Requirements for LightYears Ahead
+
+flask==3.0.0
+flask-cors==4.0.0
+pandas==2.1.4
+numpy==1.24.3
+pennylane==0.33.1
+scikit-learn==1.3.2
+matplotlib==3.8.2
+reportlab==4.0.7
+requests==2.31.0
