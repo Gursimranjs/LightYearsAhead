@@ -41,8 +41,8 @@ data/raw/*.csv
 data/processed/*.csv
 data/processed/*.npy
 
-# Keep models structure but ignore model files
-models/*.pkl
+# Models are needed for deployment
+# models/*.pkl
 
 # OS
 .DS_Store
