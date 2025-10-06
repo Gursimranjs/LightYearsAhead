@@ -55,8 +55,9 @@ const ResultsPage = () => {
   const handleDownloadReport = async (index) => {
     setDownloading(true)
     try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001'
       const response = await axios.get(
-        `/api/download-report/${results.session_id}/${index}`,
+        `${apiUrl}/download-report/${results.session_id}/${index}`,
         { responseType: 'blob' }
       )
 
@@ -78,8 +79,9 @@ const ResultsPage = () => {
   const handleDownloadAll = async () => {
     setDownloading(true)
     try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001'
       const response = await axios.get(
-        `/api/download-all-reports/${results.session_id}`,
+        `${apiUrl}/download-all-reports/${results.session_id}`,
         { responseType: 'blob' }
       )
 

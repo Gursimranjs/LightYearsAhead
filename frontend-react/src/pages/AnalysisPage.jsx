@@ -65,7 +65,8 @@ const AnalysisPage = () => {
       const formData = new FormData()
       formData.append('file', transitFile)
 
-      const response = await axios.post('/api/upload-csv', formData, {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001'
+      const response = await axios.post(`${apiUrl}/upload-csv`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         timeout: 300000
       })
